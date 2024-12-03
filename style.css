@@ -1,0 +1,1654 @@
+/* ==================== Meny Region ==================== */
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-position: center;
+    font-family: sans-serif;
+}
+
+body.menu-active {
+    overflow: hidden;
+}
+
+
+body:not(.menu-active) {
+    overflow: auto;
+}
+
+
+.menu-bar {
+    position: fixed;
+    top: 10px;
+    left: 2.5%;
+    background: rgba(255, 255, 255, 0.9); 
+    text-align: center;
+    z-index: 10;
+    width: 95%;
+    padding: 1px 0;
+    margin: 0 auto 0;
+    border-radius: 40px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.menu-logo .logo-image {
+    position: absolute;
+    width: 140px;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.menu-cart .cart-link {
+    position: absolute;
+    right: 50px;
+    top: 35px;
+    font-size: 20px;
+    color: rgb(12, 12, 12);
+}
+
+.menu-links {
+    display: inline-flex;
+    list-style: none;
+}
+
+.menu-item {
+    width: auto;
+    margin: 15px;
+    padding: 15px;
+}
+
+.menu-item a {
+    text-decoration: none;
+    color: rgb(7, 7, 7);
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.menu-item a .fa-solid {
+    margin-right: 10px;
+}
+
+.menu-item:last-child {
+    margin-left: 0;
+}
+
+.sub-menu {
+    display: none; 
+    z-index: 20;
+    color: #007BFF;
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    margin-top: 15px;
+    margin-left: -15px;
+    border-radius: 30px;
+}
+
+.sub-menu-links {
+    display: block;
+    margin: 10px;
+    list-style: none;
+}
+
+.sub-menu-item {
+    width: auto;
+    padding: 10px;
+    border-bottom: 1px solid #e7e3e3;
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.sub-menu-item:last-child {
+    border-bottom: none;
+}
+
+.sub-menu-item a:hover {
+    color: rgb(61, 61, 235);
+}
+
+.boka-kurs {
+    position: absolute;
+    right: 70px;
+    padding: 15px 15px;
+    background-color: rgb(47, 115, 240);
+    color: rgb(255, 255, 255);
+    border-radius: 40px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.boka-kurs a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.boka-kurs a:hover {
+    background-color: rgb(45, 45, 183);
+}
+
+.account-item {
+    display: none;
+}
+
+.hamburger-icon {
+    display: none;
+    position: absolute;
+    right: 20px;
+    font-size: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: rgb(7, 7, 7);
+}
+
+.close-menu {
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 30px;
+    color: rgb(7, 7, 7);
+    z-index: 1100;
+}
+.arrow {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #000; 
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+    transform: rotate(0deg);
+}
+
+.arrow.rotate {
+    transform: rotate(180deg); 
+}
+
+@media (max-width: 768px) {
+
+    .menu-logo .logo-image {
+       width: 100px;
+    }
+    
+    .hamburger-icon {
+        display: block;
+    }
+
+    .arrow {
+        display: inline-block;
+        transition: transform 0.3s ease;
+        transform: rotate(0deg); 
+       
+        
+        
+    }
+
+    .close-menu {
+        display: none;
+        color: rgb(0, 0, 0);
+    }
+    .close-menu.active {
+        display: block;
+    }
+
+    .menu-cart, .boka-kurs {
+        display: none;
+    }
+
+    .menu-bar {
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 30px 0;
+        
+    }
+
+    .menu-links {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 10%;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+        z-index: 1000;
+        transition: transform 0.3s ease;
+        transform: translateX(-100%);
+        padding-top: 70px;
+        background-color: white;
+    }
+
+    .menu-links.active {
+        display: flex;
+        transform: translateX(0);
+    }
+
+    .menu-links.active .menu-item {
+        position: relative;
+        padding-bottom: 10px;
+    }
+    
+    .menu-links.active .menu-item::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 15px;
+        width: calc(100% - 30px);
+        height: 0.5px;
+        background-color: #8e7f7f;
+    }
+    
+
+    .menu-links.active .menu-item:last-child {
+        border-bottom: none;
+    }
+
+    .menu-item {
+        text-align: center;
+        margin: 10px 0;
+        position: relative;
+        padding: 10px 0;
+        
+    }
+    .menu-item a {
+        font-size: 20px;
+        margin-left: 10px;
+
+    }
+
+
+    .account-item {
+        display: block;
+        align-items: center;
+        justify-content: center;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 10px 0;
+        width: 100%;
+        margin-top: 5px;
+        font-size: 20px;
+    }
+
+   
+
+    .menu-item .sub-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        border-radius: 0px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 200;
+        margin-left: 1px;
+        
+    }
+
+    .menu-item .sub-menu.active {
+        display: block;
+        
+    }
+
+    .sub-menu-links {
+        list-style: none;
+        padding: 0;
+        
+    }
+
+    .sub-menu-item {
+        padding: 12px 15px;
+        text-align: center;
+        border-bottom: 0.5px solid #8e7f7f;
+    }
+
+    .sub-menu-item a:hover {
+        
+        color: rgb(5, 10, 172); 
+        border-radius: 20px; 
+        transition: background-color 0.3s ease, color 0.3s ease; 
+    }
+
+    
+}
+
+
+@media (min-width: 769px) and (max-width: 1100px) {
+
+    .menu-logo .logo-image {
+        width: 110px;
+    }
+    .hamburger-icon {
+        display: block;
+    }
+
+    .arrow {
+        display: inline-block;
+        transition: transform 0.3s ease;
+        transform: rotate(0deg);
+    }
+
+    
+
+    .close-menu {
+        display: none;
+    }
+
+    .close-menu.active {
+        display: block;
+    }
+    
+
+    .menu-cart, .boka-kurs {
+        display: none;
+    }
+
+    .menu-bar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 30px 0;
+        margin-top: 10px;
+        
+        
+    }
+
+    .menu-links {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 10%;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+        z-index: 1000;
+        transition: transform 0.3s ease;
+        transform: translateX(-100%);
+        padding-top: 120px;
+    }
+
+    .menu-links.active {
+        display: flex;
+        transform: translateX(0);
+    }
+
+    .menu-links.active .menu-item {
+        border-bottom: 0.5px solid #8e7f7f;
+        padding-bottom: 10px;
+        
+    }
+
+    .menu-item {
+        text-align: center;
+        margin: 10px 0;
+        position: relative;
+        padding: 10px 0;
+    }
+
+    .account-item {
+        display: block;
+        align-items: center;
+        justify-content: center;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 10px 0;
+        width: 100%;
+        margin-top: 10px;
+        font-size: 16px;
+    }
+
+    .menu-item a {
+        font-size: 24px;
+        margin-left: 30px;
+
+    }
+
+    .menu-item .sub-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        border-radius: 0px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 200;
+        margin-left: 1px;
+    }
+
+    .menu-item .sub-menu.active {
+        display: block;
+    }
+
+    .sub-menu-links {
+        list-style: none;
+        padding: 0;
+    }
+
+    .sub-menu-item {
+        padding: 12px 15px;
+        text-align: center;
+        border-bottom: 0.5px solid #8e7f7f;
+    }
+
+    .sub-menu-item a:hover {
+        background-color: white;
+        color: rgb(5, 10, 172); 
+        border-radius: 20px;
+        transition: background-color 0.3s ease, color 0.3s ease; 
+    }
+    
+    
+}
+
+
+
+/* ==================== End Of Meny Region ==================== */
+
+
+
+
+
+/* ==================== Hero Region ==================== */
+
+
+
+
+.hero-section {
+    position: relative;
+    text-align: left;
+    overflow: hidden;
+    margin-top: 110px;
+    height: 80vh;
+}
+
+.text-container {
+    position: absolute;
+    bottom: 55%;
+    left: 5%;
+    z-index: 1;
+    white-space: nowrap;
+    width: 90%;
+}
+
+.static-txt {
+    font-size: 4.5rem; 
+    color: #000;
+    margin-right: 0;
+}
+
+.dynamic-txt {
+    font-size: 4.5rem; 
+    color: #1760b9;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid #2859c3;
+    display: inline;
+    padding-left: 10px;
+    margin-top: 5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    max-width: 100%;
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.additional-text-container {
+    position: absolute;
+    top: 55%;
+    left: 5%;
+    width: 90%;
+    z-index: 1;
+    text-align: left; 
+}
+
+.hero-title {
+    font-size: 3rem; 
+    color: #0e2e54;
+    margin: 0;
+    font-weight: 700;
+    line-height: 1.2;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.hero-description {
+    font-size: 1.8rem; 
+    color: #2e2d2d;
+    margin-top: 10px;
+    line-height: 1.6;
+    font-weight: 400; 
+}
+
+.hero-sub-text {
+    font-size: 1.6rem; 
+    color: #062c9c; 
+    margin-top: 20px;
+    font-weight: 500; 
+    letter-spacing: 1px; 
+}
+
+@keyframes blink {
+    from {
+        border-color: #ffda79;
+    }
+    to {
+        border-color: transparent;
+    }
+}
+
+/* CSS Adjustments for medium screens */
+@media (max-width: 1020px) {
+    .hero-section {
+        height: 60vh;
+        margin-top: 100px;
+        padding: 0 5%;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .text-container {
+        position: absolute;
+        bottom: 55%;
+        left: 5%;
+        width: 90%;
+    }
+
+    .static-txt, .dynamic-txt {
+        font-size: 2.8rem; 
+        line-height: 1.2;
+    }
+    .static-txt{
+        color: #000;
+    }
+
+
+    .hero-title, .hero-description, .hero-sub-text {
+        text-align: left;
+    }
+
+    .additional-text-container {
+        position: absolute;
+        top: 55%; 
+        left: 5%;
+        width: 90%;
+    }
+
+    .background-image {
+        object-fit: cover;
+    }
+}
+
+
+@media (max-width: 760px) {
+    .hero-section {
+        height: 70vh; 
+        margin-top: 90px;
+        padding: 0 5%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .text-container {
+        position: absolute;
+        bottom: 55%;
+        left: 5%;
+        width: 90%;
+    }
+
+    .static-txt, .dynamic-txt {
+        font-size: 1.5rem; 
+        line-height: 1.2; 
+    }
+    .static-txt{
+        color: #000;
+    }
+
+
+    .hero-title {
+        font-size: 1.6rem; 
+        margin-top: 10px; 
+    }
+
+    .hero-description {
+        font-size: 1.2rem; 
+        margin-top: 10px; 
+        line-height: 1.5;
+    }
+
+    .hero-sub-text {
+        font-size: 1rem; 
+        margin-top: 15px; 
+    }
+
+    .additional-text-container {
+        position: absolute;
+        top: 55%;  
+        left: 5%;
+        width: 90%;
+    }
+
+    .background-image {
+        object-fit: cover;
+    }
+}
+
+
+@media (max-width: 470px) {
+    .hero-section {
+        height: 45vh; 
+        margin-top: 90px;
+        padding: 0 5%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .text-container {
+        position: absolute;
+        bottom: 65%; 
+        left: 5%;
+        width: 90%;
+    }
+
+    .static-txt, .dynamic-txt {
+        font-size: 1.3rem; 
+        line-height: 1.2; 
+    }
+    .static-txt{
+        color: #000;
+    }
+
+    .hero-title {
+        font-size: 1.4rem; 
+        margin-top: 10px; 
+    }
+
+    .hero-description {
+        font-size: 1rem; 
+        margin-top: 10px; 
+        line-height: 1.5;
+    }
+
+    .hero-sub-text {
+        font-size: 0.9rem; 
+        margin-top: 10px; 
+    }
+
+    .additional-text-container {
+        position: absolute;
+        top: 50%; 
+        left: 5%;
+        width: 90%;
+    }
+
+    .background-image {
+        object-fit: cover;
+    }
+}
+
+
+/* ==================== End of Hero Region ==================== */
+
+
+
+
+/* ==================== Kommande Kurser Region ==================== */
+.kommande-kurser {
+    background-color: #f9f9f9;
+    padding: 60px 0;
+    text-align: center;
+    margin-top: 60px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.kommande-kurser h2 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    color: #333;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+
+.kurs-boxar {
+    display: flex;
+    width: 100%;
+    overflow: hidden; 
+    position: relative;
+    padding: 0;
+}
+
+
+.page {
+    flex: 0 0 100%; 
+    display: flex;
+    justify-content: space-evenly;
+    gap: 30px;
+    opacity: 0; 
+    transform: translateX(100%);
+    transition: transform 0.2s ease-out, opacity 0.2s ease-out; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; 
+}
+
+
+.page.active {
+    opacity: 1;
+    transform: translateX(0);
+    position: relative;
+    z-index: 2; 
+}
+
+
+.page.exit-left {
+    transform: translateX(-100%);
+    opacity: 0;
+    z-index: 0; 
+}
+
+
+.page.exit-right {
+    transform: translateX(100%);
+    opacity: 0;
+    z-index: 0; 
+}
+
+
+.box {
+    position: relative;
+    background-color: #eae6e6;
+    border-radius: 15px;
+    padding: 25px;
+    width: 300px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    overflow: hidden;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+}
+
+.box h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: 700;
+}
+
+.box p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+
+.etikett {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;  
+    height: 50px;  
+    padding: 10px;
+    background: linear-gradient(45deg, #007bff, #00d4ff);
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+    font-size: 1.3rem; 
+    font-weight: 500;
+    color: #ffffff;
+    margin: 15px 0 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;  
+}
+
+.etikett:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.4);
+}
+
+.etikett span {
+    margin: 0 10px;
+}
+
+
+.datum, .ort {
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 5px 10px;
+    border-radius: 15px;
+    white-space: nowrap; 
+}
+
+
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.prev, .next {
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
+    color: #333;
+    cursor: pointer;
+    margin: 0 20px;
+}
+
+.dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: #bbb;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.dot.active {
+    background-color: #007bff;
+}
+
+
+@media (max-width: 768px) {
+    .kurs-boxar {
+        display: block;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .page {
+        display: block;
+        gap: 0;
+        opacity: 0;
+        transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+    }
+
+    .box {
+        width: 100%;
+        max-width: 350px;
+        margin: 0 auto 40px; 
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+        overflow: hidden;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1000px) {
+    
+    .page{
+        gap: 1px;
+    }
+    .box {
+        
+        padding: 15px;
+        width: 260px;
+       
+    }
+    .etikett {
+        width: 240px;
+        
+    }
+
+}
+
+/* ==================== End Of Kommande Kurser Region ==================== */
+
+
+
+
+
+
+
+/* ==================== Instructor-Popular-Course Region ==================== */
+
+
+.instructor-popular-course {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 50px;
+    padding: 60px 40px;
+    border-radius: 15px;
+    margin-top: 60px;
+    font-family: 'Roboto', sans-serif;
+    background-color: transparent;
+}
+
+
+.left-side {
+    flex: 1;
+    text-align: center;
+}
+
+.left-side h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.video-box {
+    position: relative;
+    width: 100%; 
+    max-width: 800px; 
+    padding-top: 50%; 
+    background-color: transparent;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.video-box iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 0px;
+}
+
+
+.right-side {
+    flex: 1;
+    text-align: left;
+    margin-left: 100px; 
+}
+
+.right-side h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.right-side h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #007BFF;
+    margin-bottom: 15px;
+}
+
+.right-side p {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    white-space: normal;
+}
+
+.right-side .btn-book-now {
+    display: inline-block;
+    padding: 18px 35px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 10px;
+    margin-left: 200px;
+}
+
+.right-side .btn-book-now:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+
+@media (max-width: 768px) {
+    .instructor-popular-course {
+        flex-direction: column; 
+        padding: 40px 20px;
+        gap: 30px;
+    }
+
+    
+    .left-side {
+        text-align: center;
+        margin-bottom: 20px; 
+        margin-left: 20px;
+        width: 90%;
+    }
+
+    .left-side h2 {
+        font-size: 1.5rem; 
+    }
+
+    .video-box {
+        max-width: 100%; 
+        padding-top: 56.25%; 
+    }
+
+  
+    .right-side {
+        text-align: center;
+        margin-right: 90px;
+        
+    }
+
+    .right-side h2 {
+        font-size: 1.8rem; 
+        margin-bottom: 15px;
+    }
+
+    .right-side h3 {
+        font-size: 1.5rem; 
+    }
+
+    .right-side p {
+        font-size: 1rem; 
+        margin-bottom: 15px;
+    }
+
+    .right-side .btn-book-now {
+        font-size: 1rem; 
+        padding: 15px 30px;
+        margin-left: 0; 
+        width: 40%; 
+        text-align: center; 
+        white-space: nowrap;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1000px) {
+    .video-box {
+        width: 450px;
+        height: 120px
+    }
+    .right-side{
+        width: 40%;
+        margin-right: 200px;
+    }
+
+
+    .right-side h2 {
+        font-size: 1.4rem; 
+        
+    }
+
+    .right-side h3 {
+        font-size: 1.3rem; 
+    }
+
+    .right-side p {
+        font-size: 0.8rem; 
+        
+    }
+
+    
+
+    .right-side .btn-book-now {
+        margin-left: 30px;
+        font-size: 0.9rem; 
+        white-space: nowrap; 
+    }
+
+  
+}
+
+@media (min-width: 520px) and (max-width: 550px) {
+    .right-side {
+        margin-right: 100px;
+    }
+}
+
+@media (max-width: 450px) {
+    .left-side {
+        width: 90%;
+    }
+
+    .video-box {
+        width: 100% !important; 
+        height: 120px !important;
+        
+    }
+
+    .right-side {
+        width: 100%; 
+        margin-left: 0; 
+    }
+
+    .right-side h2, .right-side h3, .right-side p {
+        font-size: 1rem; 
+        line-height: 1.5; 
+        word-wrap: break-word; 
+        word-break: break-word;
+    }
+
+    .right-side .btn-book-now {
+        margin-left: 0; 
+        padding: 15px 30px;
+        width: auto;
+        text-align: center;
+    }
+}
+
+/* ==================== End Of Instructor-Popular-Course Region ==================== */
+
+
+
+
+
+/* ==================== Kompetens-Section Region ==================== */
+
+.kompetens-section {
+    width: 100%;
+    margin-top: 60px;
+    position: relative; 
+}
+
+.kompetens-section .image-container {
+    position: relative;
+    width: 100%;
+    height: 600px; 
+}
+
+.kompetens-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block; 
+    opacity: 10%;
+}
+
+.kompetens-section .fade-overlay {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(to right, rgb(248, 249, 250) 0%, rgba(255, 255, 255, 0) 100%);
+    z-index: 1; 
+}
+
+.kompetens-section .text-overlay {
+    position: absolute;
+    top: 35%; 
+    left: 1%; 
+    transform: translateY(-50%); 
+    color: #000000; 
+    font-family: 'Poppins', sans-serif;
+    z-index: 2; 
+    max-width: 80%;
+}
+
+.kompetens-section .text-overlay h2 {
+    font-size: 2.5rem;
+    font-weight: 400; 
+    margin-bottom: 15px;
+}
+
+.kompetens-section .text-overlay p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    font-weight: normal;
+}
+
+.kompetens-section .text-overlay p strong {
+    font-weight: bold;
+    color: #333; 
+}
+
+.kompetens-section {
+    width: 100%;
+    margin-top: 60px;
+    position: relative;
+}
+
+.kompetens-section .image-container {
+    position: relative;
+    width: 100%;
+    height: 600px; 
+}
+
+.kompetens-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: 70%;
+}
+
+.kompetens-section .fade-overlay {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40%; 
+    height: 100%;
+    background: linear-gradient(to right, rgb(248, 249, 250) 0%, rgba(255, 255, 255, 0) 100%);
+    z-index: 1;
+}
+
+.kompetens-section .text-overlay {
+    position: absolute;
+    top: 35%;
+    left: 1%;
+    transform: translateY(-50%);
+    color: #000000;
+    font-family: 'Poppins', sans-serif;
+    z-index: 2;
+    max-width: 80%;
+}
+
+.kompetens-section .text-overlay h2 {
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+.kompetens-section .text-overlay p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    font-weight: normal;
+}
+
+.kompetens-section .text-overlay p strong {
+    font-weight: bold;
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    .kompetens-section .image-container {
+        height: 70vh; 
+    }
+    
+
+    
+
+    .kompetens-section .fade-overlay {
+        width: 60%; 
+    }
+
+    .kompetens-section .text-overlay {
+        left: 15; 
+        top: 50%; 
+        transform: translateY(-50%);
+        max-width: 50%;
+        text-align: left; 
+    }
+
+    .kompetens-section .text-overlay h2 {
+        font-size: 1.4rem; 
+        line-height: 1.4;
+    }
+
+    .kompetens-section .text-overlay p {
+        font-size: 1rem; 
+    }
+}
+
+@media (max-width: 375px) {
+    .kompetens-section .image-container {
+        height: 110vh; 
+    }
+    
+
+    
+
+    .kompetens-section .fade-overlay {
+        width: 60%;
+    }
+
+    .kompetens-section .text-overlay {
+        left: 15;
+        top: 50%;
+        transform: translateY(-50%); 
+        max-width: 50%;
+        text-align: left; 
+    }
+
+    .kompetens-section .text-overlay h2 {
+        font-size: 1.4rem; 
+        line-height: 1.4;
+        margin-left: 10px;
+    }
+
+    .kompetens-section .text-overlay p {
+        font-size: 1rem; 
+        margin-left: 10px;
+    }
+}
+
+/* ==================== End Of Kompetens-Section Region ==================== */
+
+
+
+/* ==================== KursBoxar-Section Region ==================== */
+
+.courses-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 80px 40px;
+    background-color: #f9f9f9; 
+    gap: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap; 
+}
+
+
+.course-box {
+    flex: 1;
+    background: linear-gradient(145deg, #d8efff, #a4d1f7); 
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    margin: 10px; 
+}
+
+
+.course-box:hover {
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px); 
+    background: #a4d1f7; 
+}
+
+
+.course-box h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem; 
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+    text-transform: uppercase; 
+    letter-spacing: 1px;
+}
+
+
+.course-box p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+
+.course-box p:first-of-type {
+    margin-top: 15px; 
+}
+
+
+.course-box p:last-of-type {
+    margin-bottom: 0;
+}
+
+
+@media (max-width: 768px) {
+    .courses-section {
+        flex-direction: column;
+        align-items: center;
+        padding: 40px 20px;
+    }
+
+    .course-box {
+        width: 100%;
+        margin-bottom: 30px;
+        margin-left: -0.1px;
+    }
+
+    .course-box:last-child {
+        margin-bottom: 0;
+    }
+}
+
+/* ==================== End Of KursBoxar-Section Region ==================== */
+
+
+
+/* ==================== Footer Region ==================== */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px; 
+    background-color: #ffffff; 
+    margin-top: 50px;
+    flex-wrap: wrap; 
+    
+}
+
+
+
+.footer-logo img {
+    max-width: 220px; 
+    margin-top: -50px;
+}
+
+.logo-text {
+    margin-top: -50px; 
+    font-size: 16px;
+    color: #000; 
+    font-weight: normal;
+    text-align: center; 
+}
+
+.footer-links {
+    display: flex;
+    justify-content: flex-start; 
+    gap: 40px; 
+    flex-wrap: wrap; 
+    margin-top: 50px;
+}
+
+
+.footer-links .contact-us p {
+    margin-top: 10px; 
+}
+
+
+
+
+
+.footer-links > div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+}
+
+.footer-links h3 {
+    margin: 0; 
+    font-size: 20px; 
+    font-weight: bold; 
+}
+
+.footer-links ul {
+    list-style-type: none; 
+    padding-left: 0;
+}
+
+.footer-links ul li {
+    margin: 5px 0; 
+}
+
+.footer-links ul li a {
+    text-decoration: none;
+    color: #000; 
+    font-size: 18px;
+}
+
+.footer-links ul li a:hover {
+    color: #007BFF; 
+}
+
+.follow-us {
+    display: flex; 
+    gap: 20px;  
+    align-items: center;  
+}
+
+.follow-us .fab {
+    font-size: 20px;  
+}
+
+.follow-us a:hover {
+    color: #007BFF;  
+}
+/* ==================== End Of Footer Region ==================== */
+
+
+/* ==================== Footer-Bottom Region ==================== */
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f4f4f4;
+    font-size: 14px;
+    position: relative;
+}
+
+.footer-left {
+    text-align: left; 
+    font-size: 16px;
+}
+
+.footer-center {
+   
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-center img {
+    max-width: 220px;
+    height: auto;
+}
+
+.footer-right {
+    text-align: right;
+    font-size: 16px; 
+}
+
+
+
+
+@media (max-width: 768px) {
+    footer {
+        flex-direction: column; 
+        align-items: center; 
+    }
+
+    .footer-links {
+        justify-content: center; 
+        gap: 20px; 
+    }
+
+    .footer-logo {
+        margin-bottom: 60px; 
+        
+
+    }
+    .footer-logo img {
+        position: relative; 
+        left: 60px; 
+    }
+
+    .footer-bottom{
+        margin-top: 50px;
+    }
+
+    .footer-center {
+   
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .footer-center img {
+        max-width: 60px; 
+        height: auto;
+        display: none;
+    }
+
+}
+
+/* ==================== Footer-Bottom Region ==================== */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
